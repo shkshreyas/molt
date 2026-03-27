@@ -5,10 +5,6 @@ WORKDIR /app
 # Install OpenClaw globally
 RUN npm install -g openclaw
 
-# Copy config files
-COPY openclaw.json /data/.openclaw/openclaw.json
-COPY render.yaml /app/render.yaml
-
 # Expose port
 EXPOSE 8080
 
