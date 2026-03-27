@@ -21,7 +21,7 @@ services:
               "providers": {
                 "openrouter": {
                   "api": "openrouter",
-                  "apiKey": "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",
+                  "apiKey": "${OPENROUTER_API_KEY}",
                   "baseUrl": "https://openrouter.ai/api/v1",
                   "models": [
                     {"id": "minimax/minimax-m2.5:free", "name": "MiniMax M2.5", "contextWindow": 196608, "input": ["text"], "maxTokens": 8192, "cost": {"input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0}},
@@ -31,7 +31,7 @@ services:
                 },
                 "google": {
                   "api": "google",
-                  "apiKey": "AIzaSyANvN7ZghUXW5SdrM6TLBwfabZxkgFu_7U",
+                  "apiKey": "${GOOGLE_API_KEY}",
                   "models": [
                     {"id": "gemini-2.0-flash", "name": "Gemini 2.0 Flash", "contextWindow": 1048576, "input": ["text"], "maxTokens": 8192, "cost": {"input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0}}
                   ]
@@ -48,16 +48,16 @@ services:
                 "enabled": true,
                 "dmPolicy": "allowlist",
                 "allowFrom": ["*"],
-                "botToken": "8683984235:AAE_wMWsT2iTywqP7J8AvT4VVj_cEgqDloQ"
+                "botToken": "${TELEGRAM_BOT_TOKEN}"
               }
             }
           }
-      - key: CHANNELS_TELEGRAM_BOT_TOKEN
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
         value: "8683984235:AAE_wMWsT2iTywqP7J8AvT4VVj_cEgqDloQ"
-      - key: CHANNELS_TELEGRAM_DM_POLICY
-        value: "allowlist"
-      - key: CHANNELS_TELEGRAM_ALLOW_FROM
-        value: '["*"]'
     disk:
       name: molt-data
       mountPath: /data
